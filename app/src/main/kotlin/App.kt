@@ -1,9 +1,18 @@
 package com.kxxnzstdsw.app
 
 import com.kxxnzstdsw.app.plugins.initIoc
+import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-//TIP 要<b>运行</b>代码，请按 <shortcut actionId="Run"/> 或
-// 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
+
+@OptIn(DelicateCoroutinesApi::class)
 fun main() {
-    initIoc()
+    val logger = KotlinLogging.logger {}
+    try {
+        initIoc()
+    } catch (e: Exception) {
+        logger.error { e }
+        return
+    }
+    logger.info { "启动成功" }
 }
