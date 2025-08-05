@@ -1,14 +1,16 @@
 pluginManagement {
     repositories {
+        maven("https://maven.aliyun.com/repository/public/")
         maven("https://maven.aliyun.com/repository/central")
         maven("https://maven.aliyun.com/repository/gradle-plugin")
         gradlePluginPortal()
+        mavenLocal()
         mavenCentral()
     }
 }
 
 val urlMaps = mapOf(
-    "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/central",
+    "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/public/",
     "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin"
 )
 
@@ -41,9 +43,11 @@ dependencyResolutionManagement {
     // Use Maven Central and the Gradle Plugin Portal for resolving dependencies in the shared build logic (`buildSrc`) project.
     @Suppress("UnstableApiUsage")
     repositories {
+        maven("https://maven.aliyun.com/repository/public/")
         maven("https://maven.aliyun.com/repository/central")
         maven("https://maven.aliyun.com/repository/gradle-plugin")
         gradlePluginPortal()
+        mavenLocal()
         mavenCentral()
     }
 

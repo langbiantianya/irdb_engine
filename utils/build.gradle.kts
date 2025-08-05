@@ -9,5 +9,8 @@ plugins {
 dependencies {
     // Apply the kotlinx bundle of dependencies from the version catalog (`gradle/libs.versions.toml`).
     implementation(libs.bundles.kotlinxEcosystem)
-    testImplementation(kotlin("test"))
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit5)
 }

@@ -10,6 +10,11 @@ plugins {
 dependencies {
     // Project "app" depends on project "utils". (Project paths are separated with ":", so ":utils" refers to the top-level "utils" project.)
     implementation(project(":utils"))
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit5)
+
 }
 
 application {

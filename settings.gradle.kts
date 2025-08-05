@@ -4,15 +4,17 @@
 // https://docs.gradle.org/current/userguide/settings_file_basics.html
 pluginManagement {
     repositories {
+        maven("https://maven.aliyun.com/repository/public/")
         maven("https://maven.aliyun.com/repository/central")
         maven("https://maven.aliyun.com/repository/gradle-plugin")
         gradlePluginPortal()
+        mavenLocal()
         mavenCentral()
     }
 }
 
 val urlMaps = mapOf(
-    "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/central",
+    "https://repo.maven.apache.org/maven2" to "https://maven.aliyun.com/repository/public/",
     "https://plugins.gradle.org/m2" to "https://maven.aliyun.com/repository/gradle-plugin"
 )
 
@@ -43,9 +45,11 @@ dependencyResolutionManagement {
     // Use Maven Central as the default repository (where Gradle will download dependencies) in all subprojects.
     @Suppress("UnstableApiUsage")
     repositories {
+        maven("https://maven.aliyun.com/repository/public/")
         maven("https://maven.aliyun.com/repository/central")
         maven("https://maven.aliyun.com/repository/gradle-plugin")
         gradlePluginPortal()
+        mavenLocal()
         mavenCentral()
     }
 }
