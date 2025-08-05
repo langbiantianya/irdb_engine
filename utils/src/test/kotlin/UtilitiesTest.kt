@@ -1,10 +1,8 @@
 package com.kxxnzstdsw.utils
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
-import com.kxxnzstdsw.utils.*
+import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 internal class PrinterTest {
 

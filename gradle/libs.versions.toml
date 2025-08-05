@@ -8,8 +8,12 @@ kotlinxDatetime = "0.6.2"
 kotlinxSerializationJSON = "1.8.1"
 kotlinxCoroutines = "1.10.2"
 koin-bom = "4.0.3"
-kotlin-logging = "7.0.3"
-logback-classic = "1.5.18"
+kotlinLogging = "7.0.3"
+logbackClassic = "1.5.18"
+grpc = "1.72.0"
+grpcKotlin = "1.4.3"
+protobuf = "4.31.0"
+protobufPlugin = "0.9.5"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -20,13 +24,25 @@ koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-test = { module = "io.insert-koin:koin-test" }
 koin-test-junit5 = { module = "io.insert-koin:koin-test-junit5" }
-kotlin-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "kotlin-logging" }
-logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-classic" }
+kotlin-logging = { module = "io.github.oshai:kotlin-logging", version.ref = "kotlinLogging" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logbackClassic" }
+grpc-core = { module = "io.grpc:grpc-core", version.ref = "grpc" }
+grpc-netty = { module = "io.grpc:grpc-netty", version.ref = "grpc" }
+grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+protoc-gen-grpc-java = { module = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpcKotlin" }
+protoc-gen-grpc-kotlin = { module = "io.grpc:protoc-gen-grpc-kotlin", version.ref = "grpcKotlin" }
+protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
+protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
+protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
+protoc-lib = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 
 # Libraries can be bundled together for easier import
 [bundles]
 kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
-
+grpcExt = ["grpc-core", "grpc-netty", "grpc-stub", "grpc-protobuf", "protoc-gen-grpc-java", "grpc-kotlin-stub", "protoc-gen-grpc-kotlin", "protobuf-java-util", "protobuf-kotlin", "protobuf-java", "protoc-lib"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
