@@ -12,29 +12,6 @@ plugins {
 }
 
 dependencies {
-    // Project "app" depends on projectasks.shadowJar {
-    //    // 设置输出的 JAR 文件名
-    //    archiveFileName.set("app.jar")
-    //
-    //    // 配置依赖项的存放路径
-    //    dependencies {
-    //        // 将所有依赖项移到 libs 目录下
-    //        relocate("com", "libs.com")
-    //        relocate("org", "libs.org")
-    //        // 根据需要添加更多包的重定位
-    //    }
-    //
-    //    // 配置资源文件的处理
-    //    from(sourceSets.main.get().resources) {
-    //        // 将资源文件放到 resources 目录下
-    //        into("resources")
-    //    }
-    //
-    //    // 可以添加主类信息（如果需要）
-    //    manifest {
-    //        attributes["Main-Class"] = "com.example.Main"
-    //    }
-    //}t "utils". (Project paths are separated with ":", so ":utils" refers to the top-level "utils" project.)
     implementation(project(":utils"))
     implementation(libs.bundles.kotlinxEcosystem)
     implementation(project.dependencies.platform(libs.koin.bom))
