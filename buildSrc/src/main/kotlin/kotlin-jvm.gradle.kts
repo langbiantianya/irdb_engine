@@ -14,6 +14,7 @@ kotlin {
     jvmToolchain(21)
 }
 
+
 tasks.withType<Test>().configureEach {
     // Configure all test Gradle tasks to use JUnitPlatform.
     useJUnitPlatform()

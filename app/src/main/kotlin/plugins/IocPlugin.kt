@@ -1,9 +1,17 @@
 package com.kxxnzstdsw.app.plugins
 
-import org.koin.core.context.GlobalContext.startKoin
 
-fun initIoc() {
-    startKoin {
-        modules()
+import com.kxxnzstdsw.app.grpc.GrpcModules
+import org.koin.core.context.GlobalContext
+
+
+fun startIoc() {
+    GlobalContext.startKoin {
+        printLogger()
+        modules(
+            GrpcModules.grpcModule
+        )
     }
 }
+
+fun koin() = GlobalContext.get()

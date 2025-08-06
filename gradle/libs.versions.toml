@@ -7,20 +7,26 @@ kotlin = "2.2.0"
 kotlinxDatetime = "0.6.2"
 kotlinxSerializationJSON = "1.8.1"
 kotlinxCoroutines = "1.10.2"
-koin-bom = "4.0.3"
+koinAnnotationsBom = "2.1.0"
+koinBom = "4.1.0"
 kotlinLogging = "7.0.3"
 logbackClassic = "1.5.18"
-grpc = "1.72.0"
+grpc = "1.74.0"
 grpcKotlin = "1.4.3"
-protobuf = "4.31.0"
+protobuf = "4.31.1"
 protobufPlugin = "0.9.5"
+ksp = "2.2.0-2.0.2"
+shadow = "8.3.9"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+#koin-annotations-bom = { module = "io.insert-koin:koin-annotations-bom", version.ref = "koinAnnotationsBom" }
+#koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koinAnnotationsBom" }
+#koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotationsBom" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-test = { module = "io.insert-koin:koin-test" }
 koin-test-junit5 = { module = "io.insert-koin:koin-test-junit5" }
@@ -42,7 +48,10 @@ protoc-lib = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
 [bundles]
 kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
 grpcExt = ["grpc-core", "grpc-netty", "grpc-stub", "grpc-protobuf", "protoc-gen-grpc-java", "grpc-kotlin-stub", "protoc-gen-grpc-kotlin", "protobuf-java-util", "protobuf-kotlin", "protobuf-java", "protoc-lib"]
+koinExt = ["koin-core", "koin-test", "koin-test-junit5"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }

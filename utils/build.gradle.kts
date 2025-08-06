@@ -4,13 +4,14 @@ plugins {
     id("buildsrc.convention.kotlin-jvm")
     // Apply Kotlin Serialization plugin from `gradle/libs.versions.toml`.
     alias(libs.plugins.kotlinPluginSerialization)
+
 }
 
 dependencies {
     // Apply the kotlinx bundle of dependencies from the version catalog (`gradle/libs.versions.toml`).
     implementation(libs.bundles.kotlinxEcosystem)
     implementation(project.dependencies.platform(libs.koin.bom))
-    implementation(libs.koin.core)
+    implementation(libs.bundles.koinExt)
     testImplementation(libs.koin.test)
     testImplementation(libs.koin.test.junit5)
 }

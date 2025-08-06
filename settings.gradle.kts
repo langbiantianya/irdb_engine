@@ -4,11 +4,10 @@
 // https://docs.gradle.org/current/userguide/settings_file_basics.html
 pluginManagement {
     repositories {
+        maven("https://maven.aliyun.com/repository/gradle-plugin")
+        gradlePluginPortal()
         maven("https://maven.aliyun.com/repository/public/")
         maven("https://maven.aliyun.com/repository/central")
-        maven("https://maven.aliyun.com/repository/gradle-plugin")
-        maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
-        gradlePluginPortal()
         mavenLocal()
         mavenCentral()
     }
