@@ -43,12 +43,6 @@ internal class ConnectionPoolTest {
         logger.info { "数据库表: $res" }
     }
 
-//    @Test
-//    fun tableSchemaPg() {
-//        val res = runBlocking { database.tableSchema("public.test_01") }
-//        logger.info { "数据库表结构: $res" }
-//    }
-
     @Test
     fun tableColumnsPg() {
         val res = runBlocking { database.tableColumns("test_01", "public") }

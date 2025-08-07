@@ -43,7 +43,6 @@ class Database(val uri: String) {
     suspend fun users() = databaseMetaData.users()
     suspend fun roles() = databaseMetaData.roles()
     suspend fun tables(schema: String) = tableMetaData.tables(schema)
-    suspend fun tableSchema(tableName: String) = tableMetaData.tableSchema(tableName)
     suspend fun tableColumns(tableName: String, schema: String) = tableMetaData.tableColumns(tableName, schema)
     suspend fun tableKeys(tableName: String, schema: String) = tableMetaData.tableKeys(tableName, schema)
     suspend fun tableIndexes(tableName: String, schema: String) = tableMetaData.tableIndexes(tableName, schema)

@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.grpc.server
+package com.kxxnzstdsw.server
 
 import io.grpc.examples.helloworld.GreeterGrpcKt
 import io.grpc.examples.helloworld.HelloRequest

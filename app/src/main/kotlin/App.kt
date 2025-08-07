@@ -1,6 +1,6 @@
 package com.kxxnzstdsw.app
 
-import com.kxxnzstdsw.app.plugins.grpcServer
+import com.kxxnzstdsw.plugin.grpcServer
 import com.kxxnzstdsw.app.plugins.koin
 import com.kxxnzstdsw.app.plugins.startIoc
 import io.github.oshai.kotlinlogging.KotlinLogging

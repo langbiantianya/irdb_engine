@@ -28,3 +28,7 @@ tasks.withType<Test>().configureEach {
         )
     }
 }
+
+tasks.test {
+    useJUnitPlatform()
+}

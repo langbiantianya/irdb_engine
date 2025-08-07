@@ -30,11 +30,6 @@ class PgTableMetaDataImpl(val dataSource: HikariDataSource, val databaseName: St
         }
     }
 
-    /**DDL语句*/
-    override suspend fun tableSchema(tableName: String): String {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun tableColumns(tableName: String, schema: String): List<Column> = with(Dispatchers.IO) {
         dataSource.apply {
             catalog = databaseName

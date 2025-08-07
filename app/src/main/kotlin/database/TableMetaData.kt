@@ -8,9 +8,6 @@ interface TableMetaData {
     /**全部表*/
     suspend fun tables(schema: String): List<String>
 
-    /**DDL语句*/
-    suspend fun tableSchema(tableName: String): String?
-
     /**表结构*/
     suspend fun tableColumns(tableName: String, schema: String): List<Column>
 

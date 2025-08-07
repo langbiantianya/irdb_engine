@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.plugins
+package com.kxxnzstdsw.plugin
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.grpc.BindableService

@@ -1,7 +1,7 @@
 package com.kxxnzstdsw.app.plugins
 
 
-import com.kxxnzstdsw.app.grpc.GrpcModules
+import com.kxxnzstdsw.GrpcModules
 import org.koin.core.context.GlobalContext
 
 

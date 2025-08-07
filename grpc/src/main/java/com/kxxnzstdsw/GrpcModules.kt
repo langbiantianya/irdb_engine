@@ -1,6 +1,6 @@
-package com.kxxnzstdsw.app.grpc
+package com.kxxnzstdsw
 
-import com.kxxnzstdsw.app.grpc.server.HelloWorldService
+import com.kxxnzstdsw.server.HelloWorldService
 import io.grpc.BindableService
 import org.koin.dsl.module
 
