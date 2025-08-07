@@ -7,16 +7,15 @@ plugins {
 }
 
 group = "com.kxxnzstdsw"
-version = "unspecified"
-
-
+version = "1.0.0"
 
 dependencies {
+    implementation(project(":database"))
     implementation(libs.bundles.kotlinxEcosystem)
     implementation(project.dependencies.platform(libs.koin.bom))
-    api(libs.bundles.grpcExt)
     implementation(libs.bundles.koinExt)
     implementation(libs.kotlin.logging)
+    api(libs.bundles.grpcExt)
     runtimeOnly(libs.logback.classic)
     protobuf(files("ext/"))
     testImplementation(libs.koin.test)

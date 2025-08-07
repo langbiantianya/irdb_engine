@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.database.model
+package com.kxxnzstdsw.model
 
 data class Column(
     /**架构名*/

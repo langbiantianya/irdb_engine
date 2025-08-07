@@ -1,13 +1,11 @@
-package database
+package com.kxxnzstdsw
 
-import com.kxxnzstdsw.app.database.Database
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
-
-internal class ConnectionPoolTest {
-    val database = Database("jdbc:postgresql://localhost:5432/postgres?user=postgres&password=123456")
+class DatabaseTest {
+    val database = Database("jdbc:postgresql://localhost:5432/?user=postgres&password=123456")
     private val logger = KotlinLogging.logger {}
 
     @Test
@@ -37,27 +35,35 @@ internal class ConnectionPoolTest {
 
     @Test
     fun tablesPg() {
-        var res = runBlocking { database.tables("public") }
+        var res = runBlocking { database.tables("postgres", "public") }
         logger.info { "数据库表: $res" }
-        res = runBlocking { database.tables("public") }
+        res = runBlocking { database.tables("postgres", "public") }
         logger.info { "数据库表: $res" }
     }
 
     @Test
     fun tableColumnsPg() {
-        val res = runBlocking { database.tableColumns("test_01", "public") }
+        val res = runBlocking { database.tableColumns("test_01", "postgres", "public") }
         logger.info { "数据库字段列表: $res" }
     }
 
     @Test
     fun tableKeysPg() {
-        val res = runBlocking { database.tableKeys("test_01", "public") }
+        val res = runBlocking { database.tableKeys("test_01", "postgres", "public") }
         logger.info { "数据库约束: $res" }
     }
 
     @Test
     fun tableIndexesPg() {
-        val res = runBlocking { database.tableIndexes("test_01", "public") }
+        val res = runBlocking { database.tableIndexes("test_01", "postgres", "public") }
         logger.info { "数据库索引: $res" }
     }
+
+
+    @Test
+    fun execute() {
+        val res = runBlocking { database.execute("select * from test_01", "postgres", "public") }
+        logger.info { "数据库查询: $res" }
+    }
+
 }

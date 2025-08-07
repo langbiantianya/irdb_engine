@@ -1,21 +1,17 @@
-package com.kxxnzstdsw.app.database.impl
+package com.kxxnzstdsw.impl
 
-import com.kxxnzstdsw.app.database.TableMetaData
-import com.kxxnzstdsw.app.database.model.Column
-import com.kxxnzstdsw.app.database.model.Index
-import com.kxxnzstdsw.app.database.model.Key
+import com.kxxnzstdsw.TableMetaData
+import com.kxxnzstdsw.model.Column
+import com.kxxnzstdsw.model.Index
+import com.kxxnzstdsw.model.Key
 import com.zaxxer.hikari.HikariDataSource
-import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.Dispatchers
 
-class PgTableMetaDataImpl(val dataSource: HikariDataSource, val databaseName: String = "postgres") : TableMetaData {
-    private val logger = KotlinLogging.logger {}
+class PgTableMetaDataImpl(val dataSource: HikariDataSource) : TableMetaData {
 
     /**全部表*/
     override suspend fun tables(schema: String) = with(Dispatchers.IO) {
-        dataSource.apply {
-            catalog = databaseName
-        }.connection.use { connection ->
+        dataSource.connection.use { connection ->
             connection.prepareStatement("SELECT tablename FROM pg_tables WHERE schemaname = ?").use { statement ->
                 statement.setString(1, schema)
                 statement.executeQuery().use { resultSet ->
@@ -31,9 +27,7 @@ class PgTableMetaDataImpl(val dataSource: HikariDataSource, val databaseName: St
     }
 
     override suspend fun tableColumns(tableName: String, schema: String): List<Column> = with(Dispatchers.IO) {
-        dataSource.apply {
-            catalog = databaseName
-        }.connection.use { connection ->
+        dataSource.connection.use { connection ->
             connection.prepareStatement(
                 """
                 SELECT  table_schema,
@@ -73,9 +67,7 @@ class PgTableMetaDataImpl(val dataSource: HikariDataSource, val databaseName: St
     }
 
     override suspend fun tableKeys(tableName: String, schema: String): List<Key> = with(Dispatchers.IO) {
-        dataSource.apply {
-            catalog = databaseName
-        }.connection.use { connection ->
+        dataSource.connection.use { connection ->
             connection.prepareStatement(
                 """
                 SELECT tc.table_schema,
@@ -112,9 +104,7 @@ class PgTableMetaDataImpl(val dataSource: HikariDataSource, val databaseName: St
     }
 
     override suspend fun tableIndexes(tableName: String, schema: String): List<Index> = with(Dispatchers.IO) {
-        dataSource.apply {
-            catalog = databaseName
-        }.connection.use { connection ->
+        dataSource.connection.use { connection ->
             connection.prepareStatement(
                 """
                 SELECT schemaname, tablename, indexname, indexdef

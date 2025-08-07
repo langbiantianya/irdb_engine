@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.database.model
+package com.kxxnzstdsw.model
 
 data class Key(
     /**架构名*/
