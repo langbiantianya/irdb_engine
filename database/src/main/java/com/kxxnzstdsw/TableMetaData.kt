@@ -1,8 +1,8 @@
-package com.kxxnzstdsw.app.database
+package com.kxxnzstdsw
 
-import com.kxxnzstdsw.app.database.model.Column
-import com.kxxnzstdsw.app.database.model.Index
-import com.kxxnzstdsw.app.database.model.Key
+import com.kxxnzstdsw.model.Column
+import com.kxxnzstdsw.model.Index
+import com.kxxnzstdsw.model.Key
 
 interface TableMetaData {
     /**全部表*/

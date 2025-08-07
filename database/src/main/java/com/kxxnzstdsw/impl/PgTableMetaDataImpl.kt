@@ -1,9 +1,9 @@
-package com.kxxnzstdsw.app.database.impl
+package com.kxxnzstdsw.impl
 
-import com.kxxnzstdsw.app.database.TableMetaData
-import com.kxxnzstdsw.app.database.model.Column
-import com.kxxnzstdsw.app.database.model.Index
-import com.kxxnzstdsw.app.database.model.Key
+import com.kxxnzstdsw.TableMetaData
+import com.kxxnzstdsw.model.Column
+import com.kxxnzstdsw.model.Index
+import com.kxxnzstdsw.model.Key
 import com.zaxxer.hikari.HikariDataSource
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.Dispatchers

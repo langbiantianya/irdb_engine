@@ -1,12 +1,10 @@
-package database
+package com.kxxnzstdsw
 
-import com.kxxnzstdsw.app.database.Database
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
-
-internal class ConnectionPoolTest {
+class DatabaseTest {
     val database = Database("jdbc:postgresql://localhost:5432/postgres?user=postgres&password=123456")
     private val logger = KotlinLogging.logger {}
 
@@ -60,4 +58,5 @@ internal class ConnectionPoolTest {
         val res = runBlocking { database.tableIndexes("test_01", "public") }
         logger.info { "数据库索引: $res" }
     }
+
 }

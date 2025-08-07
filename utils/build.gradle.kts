@@ -8,6 +8,9 @@ plugins {
 
 }
 
+group = "com.kxxnzstdsw"
+version = "1.0.0"
+
 dependencies {
     // Apply the kotlinx bundle of dependencies from the version catalog (`gradle/libs.versions.toml`).
     implementation(libs.bundles.kotlinxEcosystem)

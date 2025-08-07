@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.database
+package com.kxxnzstdsw
 
 interface DatabaseMetaData {
     /**数据库版本*/

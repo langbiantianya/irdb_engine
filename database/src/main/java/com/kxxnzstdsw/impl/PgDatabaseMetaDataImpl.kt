@@ -1,6 +1,6 @@
-package com.kxxnzstdsw.app.database.impl
+package com.kxxnzstdsw.impl
 
-import com.kxxnzstdsw.app.database.DatabaseMetaData
+import com.kxxnzstdsw.DatabaseMetaData
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 

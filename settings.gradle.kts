@@ -68,3 +68,4 @@ include(":utils")
 include("grpc")
 
 rootProject.name = "irdb_engine"
+include("database")

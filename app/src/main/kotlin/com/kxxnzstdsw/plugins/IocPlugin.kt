@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.plugins
+package com.kxxnzstdsw.plugins
 
 
 import com.kxxnzstdsw.GrpcModules

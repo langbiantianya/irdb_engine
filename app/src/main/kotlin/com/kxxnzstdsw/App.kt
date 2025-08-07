@@ -1,8 +1,8 @@
-package com.kxxnzstdsw.app
+package com.kxxnzstdsw
 
 import com.kxxnzstdsw.plugin.grpcServer
-import com.kxxnzstdsw.app.plugins.koin
-import com.kxxnzstdsw.app.plugins.startIoc
+import com.kxxnzstdsw.plugins.koin
+import com.kxxnzstdsw.plugins.startIoc
 import io.github.oshai.kotlinlogging.KotlinLogging
 
 private val logger = KotlinLogging.logger {}

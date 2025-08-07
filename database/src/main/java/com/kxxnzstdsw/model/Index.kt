@@ -1,4 +1,4 @@
-package com.kxxnzstdsw.app.database.model
+package com.kxxnzstdsw.model
 
 data class Index(
     /**架构名*/

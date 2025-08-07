@@ -1,8 +1,8 @@
-package com.kxxnzstdsw.app.database
+package com.kxxnzstdsw
 
 
-import com.kxxnzstdsw.app.database.impl.PgDatabaseMetaDataImpl
-import com.kxxnzstdsw.app.database.impl.PgTableMetaDataImpl
+import com.kxxnzstdsw.impl.PgDatabaseMetaDataImpl
+import com.kxxnzstdsw.impl.PgTableMetaDataImpl
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.github.oshai.kotlinlogging.KotlinLogging
