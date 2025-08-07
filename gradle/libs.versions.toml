@@ -17,15 +17,14 @@ protobuf = "4.31.1"
 protobufPlugin = "0.9.5"
 ksp = "2.2.0-2.0.2"
 shadow = "8.3.9"
+hikariCP = "7.0.0"
+postgresql = "42.7.7"
 
 [libraries]
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
-#koin-annotations-bom = { module = "io.insert-koin:koin-annotations-bom", version.ref = "koinAnnotationsBom" }
-#koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "koinAnnotationsBom" }
-#koin-ksp-compiler = { module = "io.insert-koin:koin-ksp-compiler", version.ref = "koinAnnotationsBom" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-test = { module = "io.insert-koin:koin-test" }
@@ -43,12 +42,15 @@ protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", versio
 protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
 protobuf-java = { module = "com.google.protobuf:protobuf-java", version.ref = "protobuf" }
 protoc-lib = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+hikariCP = { module = "com.zaxxer:HikariCP", version.ref = "hikariCP" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
 # Libraries can be bundled together for easier import
 [bundles]
 kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
 grpcExt = ["grpc-core", "grpc-netty", "grpc-stub", "grpc-protobuf", "protoc-gen-grpc-java", "grpc-kotlin-stub", "protoc-gen-grpc-kotlin", "protobuf-java-util", "protobuf-kotlin", "protobuf-java", "protoc-lib"]
 koinExt = ["koin-core", "koin-test", "koin-test-junit5"]
+database = ["hikariCP", "postgresql"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

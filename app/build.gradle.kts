@@ -18,6 +18,7 @@ dependencies {
     implementation(libs.bundles.koinExt)
     implementation(libs.kotlin.logging)
     implementation(libs.bundles.grpcExt)
+    implementation(libs.bundles.database)
     runtimeOnly(libs.logback.classic)
     testImplementation(libs.koin.test)
     testImplementation(libs.koin.test.junit5)
