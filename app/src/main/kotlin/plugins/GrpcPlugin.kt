@@ -1,8 +1,10 @@
 package com.kxxnzstdsw.app.plugins
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.grpc.BindableService
 import io.grpc.ServerBuilder
 
+private val logger = KotlinLogging.logger {}
 
 fun grpcServer(vararg bindableServices: BindableService) {
     ServerBuilder

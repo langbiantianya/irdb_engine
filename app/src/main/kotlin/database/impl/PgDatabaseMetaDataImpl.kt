@@ -1,7 +1,6 @@
 package com.kxxnzstdsw.app.database.impl
 
 import com.kxxnzstdsw.app.database.DatabaseMetaData
-import com.kxxnzstdsw.app.plugins.logger
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 
