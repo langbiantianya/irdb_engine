@@ -5,7 +5,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
 class DatabaseTest {
-    val database = Database("jdbc:postgresql://localhost:5432/?user=postgres&password=123456")
+    val database = Database("test", "jdbc:postgresql://localhost:5432/?user=postgres&password=123456")
     private val logger = KotlinLogging.logger {}
 
     @Test
@@ -49,7 +49,7 @@ class DatabaseTest {
 
     @Test
     fun tableKeysPg() {
-        val res = runBlocking { database.tableKeys("test_01", "postgres", "public") }
+        val res = runBlocking { database.tableKeys("test_01", "test", "public") }
         logger.info { "数据库约束: $res" }
     }
 

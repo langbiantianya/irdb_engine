@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.kxxnzstdsw.grpc.service";
+option java_outer_classname = "SessionProto";
+
+import "google/protobuf/empty.proto";
+package service;
+
+
+service SessionService{
+  rpc CreateSession(CreateSessionRequest) returns (google.protobuf.Empty){}
+  rpc GetSessionInfo(GetSessionInfoRequest) returns (GetSessionInfoResponse){}
+}
+
+message CreateSessionRequest{
+  string name = 1;
+  string uri = 2;
+}
+message GetSessionInfoRequest{
+  string name = 1;
+}
+message GetSessionInfoResponse{
+  string version = 1;
+  string driverName = 2;
+}

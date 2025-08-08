@@ -9,8 +9,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 
 
-class Database(val uri: String) {
-    private val driverName: String
+class Database(val name: String, val uri: String) {
+    val driverName: String
 
     private val databaseMetaData: DatabaseMetaData
 
@@ -36,8 +36,8 @@ class Database(val uri: String) {
         }
     }
 
-    private fun dataSource(catalog: String, schema: String): HikariDataSource {
-
+    @Synchronized
+    private fun getDataSource(catalog: String, schema: String): HikariDataSource {
         val conf = HikariConfig().apply {
             maximumPoolSize = 5
             jdbcUrl = uri
@@ -53,22 +53,24 @@ class Database(val uri: String) {
 
     }
 
-    private fun tableMetaData(catalog: String, schema: String): TableMetaData {
+    @Synchronized
+    private fun getTableMetaData(catalog: String, schema: String): TableMetaData {
         return tableMetaDataMap.getOrPut(catalog) {
             mutableMapOf()
         }.getOrPut(schema) {
             when (driverName) {
-                "PostgreSQL JDBC Driver" -> PgTableMetaDataImpl(dataSource(catalog, schema))
+                "PostgreSQL JDBC Driver" -> PgTableMetaDataImpl(getDataSource(catalog, schema))
                 else -> throw RuntimeException("不支持的数据库驱动")
             }
         }
     }
 
-    private fun executor(catalog: String, schema: String): Executor {
+    @Synchronized
+    private fun getExecutor(catalog: String, schema: String): Executor {
         return executorMap.getOrPut(catalog) {
             mutableMapOf()
         }.getOrPut(schema) {
-            Executor(dataSource(catalog, schema))
+            Executor(getDataSource(catalog, schema))
         }
     }
 
@@ -77,18 +79,21 @@ class Database(val uri: String) {
     suspend fun users() = databaseMetaData.users()
     suspend fun roles() = databaseMetaData.roles()
     suspend fun tables(catalog: String, schema: String) =
-        tableMetaData(catalog, schema).tables(schema)
+        getTableMetaData(catalog, schema).tables(schema)
 
     suspend fun tableColumns(tableName: String, catalog: String, schema: String) =
-        tableMetaData(catalog, schema).tableColumns(tableName, schema)
+        getTableMetaData(catalog, schema).tableColumns(tableName, schema)
 
     suspend fun tableKeys(tableName: String, catalog: String, schema: String) =
-        tableMetaData(catalog, schema).tableKeys(tableName, schema)
+        getTableMetaData(catalog, schema).tableKeys(tableName, schema)
 
     suspend fun tableIndexes(tableName: String, catalog: String, schema: String) =
-        tableMetaData(catalog, schema).tableIndexes(tableName, schema)
+        getTableMetaData(catalog, schema).tableIndexes(tableName, schema)
 
-    suspend fun execute(sql: String, catalog: String, schema: String) = executor(catalog, schema).execute(sql)
+    suspend fun execute(sql: String, catalog: String, schema: String) = getExecutor(catalog, schema).execute(sql)
 
 
+    override fun toString(): String {
+        return "Database(name='$name', uri='$uri', driverName='$driverName')"
+    }
 }
