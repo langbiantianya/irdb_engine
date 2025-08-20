@@ -3,10 +3,12 @@ package com.kxxnzstdsw
 import com.kxxnzstdsw.plugins.koin
 import com.kxxnzstdsw.plugins.startIoc
 import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 private val logger = KotlinLogging.logger {}
 
-var appExit = false
+
 fun main(args: Array<String>) {
 //    arags 中获取 -token/-T
     val argMap = args.toList()
@@ -28,7 +30,13 @@ fun main(args: Array<String>) {
     }
 
     logger.info { "启动成功" }
-    while (!appExit) {
+    while (!Engine.appExit) {
+    }
+
+    if (Engine.appRestart) {
+        logger.info { "重启中" }
+        Thread.sleep(1.toDuration(DurationUnit.SECONDS).inWholeMilliseconds)
+        main(args)
     }
 
 }

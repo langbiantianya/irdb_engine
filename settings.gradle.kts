@@ -69,3 +69,4 @@ include("grpc")
 
 rootProject.name = "irdb_engine"
 include("database")
+include("core")

@@ -1,5 +1,6 @@
 package com.kxxnzstdsw
 
+import com.kxxnzstdsw.server.EngineService
 import com.kxxnzstdsw.server.SessionService
 import io.grpc.BindableService
 import org.koin.dsl.module
@@ -7,7 +8,7 @@ import org.koin.dsl.module
 object GrpcModules {
     val grpcModule = module {
         single<List<BindableService>> {
-            listOf(SessionService())
+            listOf(SessionService(), EngineService())
         }
     }
 }

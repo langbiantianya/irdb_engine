@@ -11,6 +11,7 @@ version = "1.0.0"
 
 dependencies {
     implementation(project(":database"))
+    implementation(project(":core"))
     implementation(libs.bundles.kotlinxEcosystem)
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.bundles.koinExt)

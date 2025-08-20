@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.kxxnzstdsw.grpc.service";
+option java_outer_classname = "EngineProto";
+
+import "google/protobuf/empty.proto";
+package service;
+
+service EngineService{
+  rpc close(google.protobuf.Empty) returns (google.protobuf.Empty){}
+  rpc restart(google.protobuf.Empty) returns (google.protobuf.Empty){}
+  rpc getInfo(google.protobuf.Empty) returns (GetInfoResponse){}
+}
+
+message GetInfoResponse{
+  string totalRam = 1;
+  string freeMemory = 2;
+  string useRam = 3;
+  string system = 4;
+  string cpu = 5;
+}
