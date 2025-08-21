@@ -20,23 +20,19 @@ fun main(args: Array<String>) {
         logger.error { "token 不能为空" }
         return
     }
+    start(token)
+}
 
-    try {
-        startIoc()
-        grpcServer(token, koin().get())
-    } catch (e: Exception) {
-        logger.error { e }
-        return
-    }
-
+fun start(token: String) {
+    startIoc()
+    grpcServer(token, koin().get())
     logger.info { "启动成功" }
     while (!Engine.appExit) {
     }
-
+    grpcServerShutdown()
     if (Engine.appRestart) {
         logger.info { "重启中" }
         Thread.sleep(1.toDuration(DurationUnit.SECONDS).inWholeMilliseconds)
-        main(args)
+        start(token)
     }
-
 }

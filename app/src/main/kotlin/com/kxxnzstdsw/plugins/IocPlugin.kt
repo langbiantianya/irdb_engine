@@ -6,6 +6,7 @@ import org.koin.core.context.GlobalContext
 
 
 fun startIoc() {
+    GlobalContext.stopKoin()
     GlobalContext.startKoin {
         printLogger()
         modules(
