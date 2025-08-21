@@ -27,14 +27,36 @@ class EngineService : EngineServiceGrpcKt.EngineServiceCoroutineImplBase() {
             .setTotalRam(runtime.totalMemory().toString()) //byte
             .setFreeMemory(runtime.freeMemory().toString()) //byte
             .setUseRam((runtime.totalMemory() - runtime.freeMemory()).toString()) //byte
-            .setSystem(getSystemInfo())
+            .setOs(getOsName())
+            .setVersion(getOsVersion())
+            .setArch(getOsArch())
+            .setJre(getJreInfo())
             .setCpu(getCpuInfo())
             .build()
     }
 
     // 获取系统信息
-    private fun getSystemInfo(): String {
-        return "${System.getProperty("os.name")} ${System.getProperty("os.version")}"
+    private fun getOsName(): String {
+        return "${System.getProperty("os.name")}"
+    }
+
+    //获取系统版本
+    private fun getOsVersion(): String {
+        return "${System.getProperty("os.version")}"
+    }
+
+    //获取jre信息
+    private fun getJreInfo(): String {
+        //java运行时版本 获取 jdk名称
+        val vmName = System.getProperty("java.vm.name")
+        val vendorVersion = System.getProperty("java.vendor.version")
+        val vmVersion = System.getProperty("java.vm.version")
+        return "$vmName $vendorVersion (build $vmVersion)"
+    }
+
+    //获取系统架构
+    private fun getOsArch(): String {
+        return "${System.getProperty("os.arch")}"
     }
 
     // 获取CPU信息
@@ -62,10 +84,10 @@ class EngineService : EngineServiceGrpcKt.EngineServiceCoroutineImplBase() {
 
     // Windows系统获取CPU型号 (通过wmic命令)
     private fun getWindowsCpuModel(): String {
-        val process = Runtime.getRuntime().exec("wmic cpu get name")
+        val process = Runtime.getRuntime().exec(listOf("wmic", "cpu", "get", "name").toTypedArray())
         return process.inputStream.bufferedReader().use { reader ->
             reader.readLines()
-                .drop(1) // 跳过表头
+                .drop(2) // 跳过表头
                 .firstOrNull { it.isNotBlank() }
                 ?.trim() ?: "Unknown Windows CPU"
         }
@@ -82,13 +104,13 @@ class EngineService : EngineServiceGrpcKt.EngineServiceCoroutineImplBase() {
 
     // FreeBSD系统获取CPU型号 (通过sysctl命令)
     private fun getFreeBsdCpuModel(): String {
-        val process = Runtime.getRuntime().exec("sysctl -n hw.model")  // FreeBSD专用sysctl参数
+        val process = Runtime.getRuntime().exec(listOf("sysctl", "-n", "hw.model").toTypedArray())  // FreeBSD专用sysctl参数
         return process.inputStream.bufferedReader().use { it.readLine()?.trim() } ?: "Unknown FreeBSD CPU"
     }
 
     // macOS系统获取CPU型号 (通过sysctl命令)
     private fun getMacCpuModel(): String {
-        val process = Runtime.getRuntime().exec("sysctl -n machdep.cpu.brand_string")
+        val process = Runtime.getRuntime().exec(listOf("sysctl", "-n", "machdep.cpu.brand_string").toTypedArray())
         return process.inputStream.bufferedReader().use { it.readLine()?.trim() } ?: "Unknown macOS CPU"
     }
 }

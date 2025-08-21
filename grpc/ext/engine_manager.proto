@@ -17,6 +17,9 @@ message GetInfoResponse{
   string totalRam = 1;
   string freeMemory = 2;
   string useRam = 3;
-  string system = 4;
-  string cpu = 5;
+  string os = 4;
+  string version = 5;
+  string jre = 6;
+  string cpu = 7;
+  string arch = 8;
 }
